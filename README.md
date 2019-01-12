@@ -1,0 +1,2 @@
+# PSModuleSampleA
+PowerShell Module demo
