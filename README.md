@@ -9,7 +9,7 @@ This repository contains multiple branches to demo different approaches
 |Branch|Status|Module Type|Description|
 |---|---|---|---|
 |master|n/a|||
-|psm1_appveyor||simple psm1|module with appveyor|
+|[psm1_appveyor](https://github.com/lazywinadmin/PSModuleSample/blob/psm1_appveyor)|[![Build status](https://ci.appveyor.com/api/projects/status/mlidkpoq62un3uk8/branch/psm1_appveyor?svg=true)](https://ci.appveyor.com/project/lazywinadmin/psmodulesample/branch/psm1_appveyor)|simple psm1|module with appveyor|
 |psm1_appveyor_buildps1||simple psm1|module with appveyor/build.ps1|
 |psm1_appveyor_buildhelper||simple psm1|module with appveyor/build.ps1/Module BuildHelper|
 |psm1_appveyor_psake||simple psm1|module with appveyor/build.ps1/Module BuildHelper, Psake|
