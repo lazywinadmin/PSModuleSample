@@ -15,6 +15,7 @@ This repository contains multiple branches to demo different approaches
 |psm1_appveyor_psake||simple psm1|module with appveyor/build.ps1/Module BuildHelper, Psake|
 |psm1_azdevops||simple psm1|module with Azure Devops|
 |psm1_azdevops_buildps1||simple psm1|module with Azure Devops|
+|dotsource||dotsourced|module with appveyor|
 |dotsource_appvey||dotsourced|module with appveyor|
 |dotsource_appvey_buildps1||dotsourced|module with appveyor|
 |compiled_appveyor|compiled|module with appveyor|
