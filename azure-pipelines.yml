@@ -13,3 +13,14 @@ trigger:
   paths:
     exclude:
     - README.md
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+- task: AzurePowerShell@4
+  inputs:
+    ScriptType: 'InlineScript'
+    Inline: '# hhhh
+# You can write your azure powershell scripts inline here. 
+Write-Host 
+# You can also pass predefined and custom variables to this script using arguments'
+    TargetAzurePs: 'LatestVersion'
