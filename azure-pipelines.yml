@@ -6,8 +6,11 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: '# Write your powershell commands here.
-Write-Host "Hello"
-Write-Host "Hello World"
-
-# Use the environment variables input below to pass secret variables to this script.'
+    script: '
+# Install Pester 
+Install-Module -Name Pester -scope currentuser -force -verbose
+# Run Tests
+$res = Invoke-Pester -Path ".\Tests" -OutputFormat NUnitXml -OutputFile TestsResults.xml -PassThru
+#(New-Object "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestsResults.xml))
+#if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed."}
+'
