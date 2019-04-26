@@ -19,6 +19,7 @@ steps:
 
 #  displayName: 'PowerShell - Pester'
 - task: PowerShell@2
+  displayName: "PowerShell - Build"
   inputs:
     filePath: 'build.ps1'
 
