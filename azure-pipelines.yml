@@ -3,16 +3,11 @@ resources:
 queue:
   name: Hosted VS2017
 steps:
-- powershell: ./ '.\DoTests.ps1'
-  displayName: 'PowerShell Script'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive $(Build.BinariesDirectory)'
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: '# Write your powershell commands here.
-Write-Host "Hello AzureDevOps! :)"
+Write-Host "Hello"
 Write-Host "Hello World"
 
 # Use the environment variables input below to pass secret variables to this script.'
