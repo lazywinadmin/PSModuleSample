@@ -8,19 +8,11 @@ steps:
 
 - task: ArchiveFiles@2
   displayName: 'Archive $(Build.BinariesDirectory)'
-
-trigger:
-  paths:
-    exclude:
-    - README.md
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-- task: AzurePowerShell@4
-  inputs:
-    ScriptType: 'InlineScript'
-    Inline: '# hhhh
-# You can write your azure powershell scripts inline here. 
-Write-Host 
-# You can also pass predefined and custom variables to this script using arguments'
-    TargetAzurePs: 'LatestVersion'
+    script: '# Write your powershell commands here.
+Write-Host "Hello AzureDevOps! :)"
+Write-Host "Hello World"
+
+# Use the environment variables input below to pass secret variables to this script.'
