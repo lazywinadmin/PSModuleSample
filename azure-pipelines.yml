@@ -9,4 +9,5 @@ steps:
   inputs:
     targetType: 'inline'
     script: '#test
-$psversiontable'
+Write-Output $psversiontable
+Write-Host "Hello World!!!!!!"'
