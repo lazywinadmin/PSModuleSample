@@ -3,12 +3,10 @@ resources:
 queue:
   name: Hosted VS2017
 steps:
-- powershell: ./ '.\DoTests.ps1'
-  displayName: 'PowerShell Script'
-- task: MyPowerShell@1
+#- powershell: ./ '.\DoTests.ps1'
+#  displayName: 'PowerShell Script'
+- task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: '# Write your powershell commands here.
-Write-Host "Hello AzureDevOps! :)"
-Write-Host "Hello World"
-# Use the environment variables input below to pass secret variables to this script.'
+    script: '#test
+$psversiontable'
