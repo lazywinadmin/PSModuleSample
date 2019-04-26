@@ -5,7 +5,7 @@ queue:
 steps:
 - powershell: ./ '.\DoTests.ps1'
   displayName: 'PowerShell Script'
-- task: MyPowerShell
+- task: MyPowerShell@1
   inputs:
     targetType: 'inline'
     script: '# Write your powershell commands here.
