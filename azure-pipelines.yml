@@ -3,23 +3,26 @@ resources:
 queue:
   name: Hosted VS2017
 steps:
-- powershell: |
-   # Install pester
-   Install-module -name Pester -scope currentuser -force -verbose
+# - powershell: |
+#    # Install pester
+#    Install-module -name Pester -scope currentuser -force -verbose
    
-   # Run Pester
-   Invoke-Pester -Path ".\Tests" -OutputFormat NUnitXml -OutputFile Test-Results.xml -PassThru
+#    # Run Pester
+#    Invoke-Pester -Path ".\Tests" -OutputFormat NUnitXml -OutputFile Test-Results.xml -PassThru
    
-   # Upload result
-   Write-Host "https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/test/Runs/$BUILD_BUILDID/results?api-version=5.0"
-   [void]((New-Object 'System.Net.WebClient').UploadFile("https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/test/Runs/$($env:BUILD_BUILDID)/results?api-version=5.0", (Resolve-Path .\Test-Results.xml)))
+#    # Upload result
+#    Write-Host "https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/test/Runs/$BUILD_BUILDID/results?api-version=5.0"
+#    [void]((New-Object 'System.Net.WebClient').UploadFile("https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/test/Runs/$($env:BUILD_BUILDID)/results?api-version=5.0", (Resolve-Path .\Test-Results.xml)))
    
-   # List environment variables
-   gci env:\
-   
-  displayName: 'PowerShell - Pester'
+#    # List environment variables
+#    gci env:\
+
+#  displayName: 'PowerShell - Pester'
+- task: PowerShell@2
+  inputs:
+    filePath: 'build.ps1'
+
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/TEST-*.xml'
   inputs:
     testResultsFormat: NUnit
-
