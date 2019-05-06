@@ -1,4 +1,4 @@
-$projectRoot = Resolve-Path -Path "$PSScriptRoot\.."
+$projectRoot = Resolve-Path -Path "$PSScriptRoot\..\output"
 $moduleRoot = Split-Path -Path (Resolve-Path -Path "$projectRoot\*\*.psm1")
 $ModuleManifestPath = Resolve-Path -Path "$projectRoot\*\*.psd1"
 $moduleName = Split-Path -Path $moduleRoot -Leaf
