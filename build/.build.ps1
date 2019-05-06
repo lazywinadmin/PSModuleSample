@@ -1,16 +1,6 @@
-$srcPath = "$PSScriptRoot\src"
-$buildPath = "$PSScriptRoot\output"
-$moduleName = "PSModuleSample"
-$modulePath = "$buildPath\$moduleName"
-$author = 'Francois-Xavier Cat'
-$CompanyName = 'Unknown'
-$moduleVersion = '0.0.1'
-$testResult = "Test-Results.xml"
-$projectUri = "https://github.com/lazywinadmin/psmodulesample"
 
-
-Install-Module -Name InvokeBuild,Pester -Force -scope CurrentUser -SkipPublisherCheck
-Import-Module -Name InvokeBuild,Pester
+#Install-Module -Name InvokeBuild,Pester -Force -scope CurrentUser -SkipPublisherCheck
+#Import-Module -Name InvokeBuild,Pester
 
 task -name installmodule {
     if(-not(Get-Module -Name Pester,PSScriptAnalyzer)) {
@@ -20,6 +10,7 @@ task -name installmodule {
     else {"Modules are already present"}
 }
 
+<#
 task -name Analyze {
     $scriptAnalyzerParams = @{
         Path = "$BuildRoot\DSCClassResources\TeamCityAgent\"
@@ -36,7 +27,7 @@ task -name Analyze {
         throw "One or more PSScriptAnalyzer errors/warnings where found."
     }
 }
-
+#>
 task -Name build {
     # Retrieve Public functions
     $Public = @(Get-ChildItem -Path $srcPath\Public\*.ps1 -ErrorAction SilentlyContinue)
@@ -82,7 +73,7 @@ task -Name clean {
 
 task -Name test {
     # Run test build
-    Invoke-Pester -Path ".\Tests" -OutputFormat NUnitXml -OutputFile $buildPath\$testResult -PassThru
+    Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile $buildPath\$testResult -PassThru
 }
 
 # Run clean and build
