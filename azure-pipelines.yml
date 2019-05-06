@@ -1,5 +1,7 @@
 trigger:
-- dotsource_azdevops
+  branches:
+    include:
+    - dotsource_azdevops
 resources:
 - repo: self
 queue:
