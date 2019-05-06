@@ -1,5 +1,5 @@
 trigger:
-- dotsource_azdevops_invokebuild # branch names which will trigger a build
+- dotsource_azdevops_invokebuild
 resources:
 - repo: self
 queue:
