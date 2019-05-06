@@ -1,3 +1,5 @@
+trigger:
+- psm1_azdevops_buildps1
 resources:
 - repo: self
 queue:
