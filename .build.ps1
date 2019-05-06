@@ -8,7 +8,9 @@ $moduleVersion = '0.0.1'
 $testResult = "Test-Results.xml"
 $projectUri = "https://github.com/lazywinadmin/psmodulesample"
 
+
 Install-Module -Name InvokeBuild,Pester -Force -scope CurrentUser -SkipPublisherCheck
+Import-Module -Name InvokeBuild,Pester
 
 task -name installmodule {
     if(-not(Get-Module -Name Pester,PSScriptAnalyzer)) {
