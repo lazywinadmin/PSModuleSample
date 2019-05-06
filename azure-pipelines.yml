@@ -1,7 +1,5 @@
-pr:
-  autoCancel: true # indicates whether additional pushes to a PR should cancel in-progress runs for the same PR. Defaults to true
-  branches:
-    include: dotsource_azdevops_invokebuild # branch names which will trigger a build
+trigger:
+- dotsource_azdevops_invokebuild # branch names which will trigger a build
 resources:
 - repo: self
 queue:
