@@ -8,16 +8,7 @@ $moduleVersion = '0.0.1'
 $testResult = "Test-Results.xml"
 $projectUri = "https://github.com/lazywinadmin/psmodulesample"
 
-# load all the build tasks
-<#
-Get-ChildItem -Path "$PSScriptRoot/.build/" -Recurse -Include *.ps1 -Verbose |
-Foreach-Object {
-    "Importing file $($_.BaseName)" | Write-Verbose
-    . $_.FullName
-}
-#>
-
-# install psdepends
+Install-Module -Name InvokeBuild,Pester -Force -scope CurrentUser -SkipPublisherCheck
 
 task -name installmodule {
     if(-not(Get-Module -Name Pester,PSScriptAnalyzer)) {
