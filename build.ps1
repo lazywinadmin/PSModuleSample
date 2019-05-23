@@ -1,25 +1,31 @@
-$srcPath = "$PSScriptRoot\src"
-$buildPath = "$PSScriptRoot\output"
-$TestPath = "$PSScriptRoot\tests"
 $moduleName = "PSModuleSample"
-$modulePath = "$buildPath\$moduleName"
+$srcPath = "$PSScriptRoot\src"
+$outputPath = "$PSScriptRoot\output"
+$buildPath = "$PSScriptRoot\build"
+$testPath = "$PSScriptRoot\tests"
+$modulePath = "$outputPath\$moduleName"
 $author = 'Francois-Xavier Cat'
-$CompanyName = 'Unknown'
+$companyName = 'LazyWinAdmin.com'
 $moduleVersion = '0.0.1'
 $testResult = "Test-Results.xml"
-$projectUri = "https://github.com/lazywinadmin/psmodulesample"
+$projectUri = "https://github.com/lazywinadmin/$moduleName"
 
 # Install dependendices
 $Script:Modules = @(
     #'BuildHelpers',
     'InvokeBuild',
-    'Pester'
+    'Pester',
+    'PSDeploy'
     #'platyPS',
     #'PSScriptAnalyzer',
     #'DependsOn'
 )
+
 Get-PackageProvider -Name 'NuGet' -ForceBootstrap | Out-Null
-if(-not(gmo $Script:Modules)){Install-Module -Name $Script:Modules -Force -scope CurrentUser -SkipPublisherCheck}
+if(-not(Get-Module -Name $Script:Modules))
+{
+    Install-Module -Name $Script:Modules -Force -Scope CurrentUser -SkipPublisherCheck
+}
 
 Invoke-Build -Result 'Result' -File .\build\.build.ps1
 

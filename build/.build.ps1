@@ -29,10 +29,10 @@ task -name Analyze {
 }
 #>
 task -Name build {
-    # Retrieve Public functions
-    $Public = @(Get-ChildItem -Path $srcPath\Public\*.ps1 -ErrorAction SilentlyContinue)
-    # Retrieve Private functions
-    $Private = @(Get-ChildItem -Path $srcPath\Private\*.ps1 -ErrorAction SilentlyContinue)
+    # Retrieve public functions
+    $publicFiles = @(Get-ChildItem -Path $srcPath\public\*.ps1 -ErrorAction SilentlyContinue)
+    # Retrieve private functions
+    $privateFiles = @(Get-ChildItem -Path $srcPath\private\*.ps1 -ErrorAction SilentlyContinue)
 
     # Create build output directory if does not exist yet
     if(-not (Test-Path -path $modulePath))
@@ -41,9 +41,10 @@ task -Name build {
     }
 
     # Build PSM1 file with all the functions
-    foreach($file in @($Public + $Private))
+    foreach($file in @($publicFiles + $privateFiles))
     {
-        Get-Content -Path $($file.fullname) | Out-File -FilePath "$modulePath\$moduleName.psm1" -Append -Encoding utf8
+        Get-Content -Path $($file.fullname) |
+            Out-File -FilePath "$modulePath\$moduleName.psm1" -Append -Encoding utf8
     }
 
     # Copy the Manifest to the build (psd1)
@@ -55,7 +56,7 @@ task -Name build {
         Author = $author
         Copyright = "(c) $((Get-Date).year) $author. All rights reserved."
         Path = "$modulepath\$moduleName.psd1"
-        FunctionsToExport = $Public.basename
+        FunctionsToExport = $publicFiles.basename
         Rootmodule = "$moduleName.psm1"
         ModuleVersion = $moduleVersion
         ProjectUri = $projectUri
@@ -68,12 +69,16 @@ task -Name build {
 
 task -Name clean {
     # Output folder
-    Remove-Item -confirm:$false -Recurse -path $buildPath -ErrorAction SilentlyContinue
+    Remove-Item -confirm:$false -Recurse -path $outputPath -ErrorAction SilentlyContinue
 }
 
 task -Name test {
     # Run test build
-    Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile $buildPath\$testResult -PassThru
+    Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile $outputPath\$testResult -PassThru
+}
+
+task -Name publish {
+    Invoke-PSDeploy -Path $buildPath\.psdeploy.ps1 -
 }
 
 # Run clean and build
