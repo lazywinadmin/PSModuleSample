@@ -26,6 +26,8 @@ steps:
   displayName: 'PowerShell - build.ps1'
   inputs:
     filePath: 'build.ps1' # invokebuild here ?
+  env:
+    PSGalleryKey: $(MyPSGalleryKey)
 
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/TEST-*.xml'
