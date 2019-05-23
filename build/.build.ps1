@@ -54,6 +54,7 @@ task -Name build {
 
     $moduleManifestData = @{
         Author = $author
+        Description = $Description
         Copyright = "(c) $((Get-Date).year) $author. All rights reserved."
         Path = "$modulepath\$moduleName.psd1"
         FunctionsToExport = $publicFiles.basename
@@ -78,7 +79,7 @@ task -Name test {
 }
 
 task -Name publish {
-    Invoke-PSDeploy -Path $buildPath\.psdeploy.ps1 -
+    Invoke-PSDeploy -Path $buildPath\.psdeploy.ps1 -Force
 }
 
 # Run clean and build
