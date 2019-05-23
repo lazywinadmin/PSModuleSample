@@ -78,9 +78,9 @@ task -Name test {
     Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile $outputPath\$testResult -PassThru
 }
 
-task -Name publish {
+task -Name deploy {
     Invoke-PSDeploy -Path $buildPath\.psdeploy.ps1 -Force
 }
 
 # Run clean and build
-task -Name . clean,build,test
+task -Name . clean,build,test,deploy
