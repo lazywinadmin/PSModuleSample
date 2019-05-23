@@ -79,7 +79,7 @@ task -Name test {
 }
 
 task -Name deploy {
-    Invoke-PSDeploy -Path $buildPath\.psdeploy.ps1 -Force
+    Invoke-PSDeploy -Path "$buildPath\.psdeploy.ps1" -Force
 }
 
 # Run clean and build

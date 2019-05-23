@@ -1,4 +1,4 @@
-Deploy -Script Module {
+Deploy -Name Module {
     By -DeploymentType PSGalleryModule {
         FromSource -Source .\output\PSModuleSample
         To -Targets PSGallery
