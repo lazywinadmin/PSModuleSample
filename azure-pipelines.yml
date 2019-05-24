@@ -25,7 +25,7 @@ steps:
 - task: PowerShell@2
   displayName: 'PowerShell - build.ps1'
   inputs:
-    filePath: 'build.ps1' # invokebuild here ?
+    filePath: 'build.ps1'
   env:
     psgallerykey: $(psgallerykey)
 
