@@ -27,7 +27,7 @@ steps:
   inputs:
     filePath: 'build.ps1' # invokebuild here ?
   env:
-    PSGalleryKey: $(PSGalleryKey)
+    psgallerykey: $(psgallerykey)
 
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/TEST-*.xml'
