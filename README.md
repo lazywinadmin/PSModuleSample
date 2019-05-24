@@ -1,5 +1,7 @@
 # PSModuleSample
 
+[![Build Status](https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/build/status/dotsource_azdevops_invokebuild2?branchName=master)](https://dev.azure.com/lazywinadmin/PSModuleSample/_build/latest?definitionId=12&branchName=master)
+
 PowerShell Module demo use during my presentation on Automating Module builds.
 
 ## Branches
