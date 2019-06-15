@@ -22,6 +22,9 @@ steps:
 #    gci env:\
 
 #  displayName: 'PowerShell - Pester'
+- powershell: |
+    gci env:/
+  displayName: 'PowerShell - List env variables'
 - task: PowerShell@2
   displayName: 'PowerShell - build.ps1'
   inputs:
