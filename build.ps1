@@ -7,28 +7,40 @@ $modulePath = "$outputPath\$moduleName"
 $author = 'Francois-Xavier Cat'
 $description = 'PowerShell test module'
 $companyName = 'lazywinadmin.com'
-$moduleVersion = '0.0.1'
+#$moduleVersion = '0.0.1'
 $testResult = "Test-Results.xml"
 $projectUri = "https://github.com/lazywinadmin/$moduleName"
+
 
 # Install dependendices
 $Script:Modules = @(
     #'BuildHelpers',
     'InvokeBuild',
     'Pester',
-    'PSDeploy'
+    'PSDeploy',
+    'BuildHelpers'
     #'platyPS',
     #'PSScriptAnalyzer',
     #'DependsOn'
 )
 
+
 Get-PackageProvider -Name 'NuGet' -ForceBootstrap | Out-Null
-if(-not(Get-Module -Name $Script:Modules))
-{
-    Install-Module -Name $Script:Modules -Force -Scope CurrentUser -SkipPublisherCheck
+
+$Script:Modules | %{
+    $CurrentModule = $_
+    if(-not(Get-Module -Name $CurrentModule -list))
+    {
+        Install-Module -Name $CurrentModule -Force -Scope CurrentUser -SkipPublisherCheck
+    }
 }
 
-Invoke-Build -Result 'Result' -File .\build\.build.ps1
+# Define last module version
+Import-Module -name BuildHelpers
+$moduleVersion = Get-NextNugetPackageVersion -Name $moduleName
+
+# Start build
+Invoke-Build -Result 'Result' -File (join-path -path $buildPath -ChildPath ".build.ps1")
 
 if ($Result.Error)
 {
