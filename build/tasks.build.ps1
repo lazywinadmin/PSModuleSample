@@ -3,6 +3,15 @@ task -Name nothing {
     "foo"
 }
 
+task -Name setEnvironment {
+    # Run test build
+    # Read the current environment, populate env vars
+    Set-BuildEnvironment
+
+    # Read back the env vars
+    Get-Item ENV:*
+}
+
 task -Name build {
     Write-Verbose -Message "Task: Build"
     # Retrieve public functions
@@ -61,5 +70,3 @@ task -Name test {
     # Run test build
     Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile "$buildOutputPath\$testResult" -PassThru
 }
-
-#task . clean,nothing
