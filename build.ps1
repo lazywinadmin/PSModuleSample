@@ -8,7 +8,9 @@ Change History
 -1.0 | 2019/06/17 | Francois-Xavier Cat
     Initial version
 TODO
--Check if we can fetch the information in the "Edit" part with BuildHelpers
+-Check if we can fetch the information in the "Edit" part with BuildHelpers (see below)
+-Conditional deploy "task deploy -if ($BHCommitMessage -match '!deploy')"
+-publish release to github
 -Make this file appraoch easily clonable
 -Improve agnostic approach so it can work on any CI
 -Minimalize files present in the root, possibly move build.ps1 ?
