@@ -25,17 +25,19 @@ steps:
 #- powershell: |
 #    gci env:/
 #  displayName: 'PowerShell - List env variables'
-#- powershell: |
-#    .\build.ps1 -InstallDependencies:$true
-#  displayName: 'PowerShell - test'
-- task: PowerShell@2
-  displayName: 'PowerShell - Start build'
-  inputs:
-    targetType: filePath
-    filePath: '.\build.ps1'
-    arguments: '-InstallDependencies -Verbose'
+- powershell: |
+    .\build.ps1 -InstallDependencies:$true -verbose
+  displayName: 'PowerShell - test'
   env:
     psgallerykey: $(psgallerykey)
+#- task: PowerShell@2
+#  displayName: 'PowerShell - Start build'
+#  inputs:
+#    targetType: filePath
+#    filePath: '.\build.ps1'
+#    arguments: '-InstallDependencies -Verbose'
+#  env:
+#    psgallerykey: $(psgallerykey)
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/TEST-*.xml'
   inputs:
