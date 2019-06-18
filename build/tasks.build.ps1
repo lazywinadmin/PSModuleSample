@@ -10,6 +10,7 @@ task -Name setEnvironment {
 
     # Read back the env vars
     Get-Item ENV:* | Sort-Object -property Name
+}
 
 task -Name build {
     Write-Verbose -Message "Task: Build"
