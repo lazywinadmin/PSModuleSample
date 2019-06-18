@@ -26,8 +26,8 @@ steps:
 #    gci env:/
 #  displayName: 'PowerShell - List env variables'
 - powershell: |
-    .\build.ps1 -InstallDependencies:$true -verbose
-  displayName: 'PowerShell - test'
+    .\build.ps1 -InstallDependencies:$true -verbose -tasks 'build','test','deploy'
+  displayName: 'PowerShell - Build > test > deploy'
   env:
     psgallerykey: $(psgallerykey)
 #- task: PowerShell@2

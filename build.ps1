@@ -23,7 +23,7 @@ Param(
     [string]$GalleryRepository,
     [pscredential]$GalleryCredential,
     [string]$GalleryProxy,
-    [string[]]$tasks=@("nothing"),
+    [string[]]$tasks, # @('build','test','deploy')
     [switch]$InstallDependencies
     )
 try{
