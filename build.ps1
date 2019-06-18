@@ -57,26 +57,28 @@ try{
                 force = $true
                 ForceBootstrap = $true
             }
+
             if($PSBoundParameters['verbose']) {$providerBootstrapParams.add('verbose',$verbose)}
             if($GalleryProxy) { $providerBootstrapParams.Add('Proxy',$GalleryProxy) }
             $null = Install-PackageProvider @providerBootstrapParams
             Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-            if (-not(Get-Module -Listavailable PSDepend)) {
-                Write-verbose "BootStrapping PSDepend"
-                "Parameter $buildOutputPath"| Write-verbose
-                $InstallPSDependParams = @{
-                    Name = 'PSDepend'
-                    AllowClobber = $true
-                    Confirm = $false
-                    Force = $true
-                    Scope = 'CurrentUser'
-                }
-                if($PSBoundParameters['verbose']) { $InstallPSDependParams.add('verbose',$verbose)}
-                if ($GalleryRepository) { $InstallPSDependParams.Add('Repository',$GalleryRepository) }
-                if ($GalleryProxy)      { $InstallPSDependParams.Add('Proxy',$GalleryProxy) }
-                if ($GalleryCredential) { $InstallPSDependParams.Add('ProxyCredential',$GalleryCredential) }
-                Install-Module @InstallPSDependParams
+        }
+
+        if (-not(Get-Module -Listavailable -Name PSDepend)) {
+            Write-verbose "BootStrapping PSDepend"
+            "Parameter $buildOutputPath"| Write-verbose
+            $InstallPSDependParams = @{
+                Name = 'PSDepend'
+                AllowClobber = $true
+                Confirm = $false
+                Force = $true
+                Scope = 'CurrentUser'
             }
+            if($PSBoundParameters['verbose']) { $InstallPSDependParams.add('verbose',$verbose)}
+            if ($GalleryRepository) { $InstallPSDependParams.Add('Repository',$GalleryRepository) }
+            if ($GalleryProxy)      { $InstallPSDependParams.Add('Proxy',$GalleryProxy) }
+            if ($GalleryCredential) { $InstallPSDependParams.Add('ProxyCredential',$GalleryCredential) }
+            Install-Module @InstallPSDependParams
         }
 
         # Install module dependencies with PSDepend

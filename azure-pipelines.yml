@@ -33,7 +33,7 @@ steps:
   inputs:
     targetType: filePath
     filePath: '.\build.ps1'
-    arguments: '-InstallDependencies'
+    arguments: '-InstallDependencies -Verbose'
   env:
     psgallerykey: $(psgallerykey)
 - task: PublishTestResults@2
