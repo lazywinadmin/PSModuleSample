@@ -44,6 +44,7 @@ try{
     $testPath = "$rootpath\tests"
     $modulePath = "$buildoutputPath\$moduleName"
     $dependenciesPath = "$rootpath\dependencies" # folder to store modules
+    $testResult = "Test-Results.xml"
 
     $requirementsFilePath = "$buildPath\requirements.psd1" # contains dependencies
     $buildTasksFilePath = "$buildPath\tasks.build.ps1" # contains tasks to execute

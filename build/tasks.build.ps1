@@ -50,7 +50,7 @@ task -Name build {
 task -Name clean {
     # Output folder
     Remove-Item -confirm:$false -Recurse -path $buildOutputPath -ErrorAction SilentlyContinue
-    Remove-Item -confirm:$false -Recurse -path $dependenciesPath -ErrorAction SilentlyContinue
+    #Remove-Item -confirm:$false -Recurse -path $dependenciesPath -ErrorAction SilentlyContinue
 }
 
 task -Name deploy {
@@ -59,7 +59,7 @@ task -Name deploy {
 
 task -Name test {
     # Run test build
-    Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile $buildOutputPath\$testResult -PassThru
+    Invoke-Pester -Path $TestPath -OutputFormat NUnitXml -OutputFile "$buildOutputPath\$testResult" -PassThru
 }
 
 #task . clean,nothing
