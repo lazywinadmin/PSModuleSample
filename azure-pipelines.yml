@@ -25,22 +25,11 @@ steps:
 - powershell: |
     gci env:/
   displayName: 'PowerShell - List env variables'
-#- powershell: |
-#    (invoke-restmethod -method Get -URI "https://www.powershellgallery.com/api/v2/Search()?`$filter=(startswith(Id,'adsips') and IsLatestVersion)").properties.version
-#  displayName: 'PowerShell - Get latest version'
-
-#- task: PowerShell@2
-#  displayName: 'PowerShell - Start build'
-#  inputs:
-#    filePath: 'build.ps1'
-#  env:
-#    psgallerykey: $(psgallerykey)
-
-- powershell: |
-    gci env:/
-  displayName: 'PowerShell - List env variables'
-- powershell: |
-    .\build.ps1 -InstallDependencies
+- task: PowerShell@2
+  displayName: 'PowerShell - Start build'
+  inputs:
+    filePath: 'build.ps1'
+    arguments: '-InstallDependencies'
   env:
     psgallerykey: $(psgallerykey)
   displayName: 'PowerShell - Start Build'
