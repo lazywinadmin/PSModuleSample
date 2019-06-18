@@ -32,7 +32,6 @@ steps:
     arguments: '-InstallDependencies'
   env:
     psgallerykey: $(psgallerykey)
-  displayName: 'PowerShell - Start Build'
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/TEST-*.xml'
   inputs:
