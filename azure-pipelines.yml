@@ -7,37 +7,11 @@ resources:
 queue:
   name: Hosted VS2017
 steps:
-# - powershell: |
-#    # Install pester
-#    Install-module -name Pester -scope currentuser -force -verbose
-
-#    # Run Pester
-#    Invoke-Pester -Path ".\Tests" -OutputFormat NUnitXml -OutputFile Test-Results.xml -PassThru
-
-#    # Upload result
-#    Write-Host "https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/test/Runs/$BUILD_BUILDID/results?api-version=5.0"
-#    [void]((New-Object 'System.Net.WebClient').UploadFile("https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/test/Runs/$($env:BUILD_BUILDID)/results?api-version=5.0", (Resolve-Path .\Test-Results.xml)))
-
-#    # List environment variables
-#    gci env:\
-
-#  displayName: 'PowerShell - Pester'
-#- powershell: |
-#    gci env:/
-#  displayName: 'PowerShell - List env variables'
 - powershell: |
     .\build.ps1 -InstallDependencies:$true -verbose -tasks 'setEnvironment','build','test','deploy'
   displayName: 'PowerShell - Build > test > deploy'
   env:
     psgallerykey: $(psgallerykey)
-#- task: PowerShell@2
-#  displayName: 'PowerShell - Start build'
-#  inputs:
-#    targetType: filePath
-#    filePath: '.\build.ps1'
-#    arguments: '-InstallDependencies -Verbose'
-#  env:
-#    psgallerykey: $(psgallerykey)
 - task: PublishTestResults@2
   displayName: 'Publish Test Results **/TEST-*.xml'
   inputs:
