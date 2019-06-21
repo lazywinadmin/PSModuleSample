@@ -17,6 +17,9 @@ TODO
 -Add more verbose/output messages
 -Use invokebuild header ?
 -Add filter on the build condition (if commit message "!deploy")
+-Conditional deploy "task deploy -if ($BHCommitMessage -match '!deploy')"
+-publish release to github
+-Make this file appraoch easily clonable
 #>
 [CmdletBinding()]
 Param(
