@@ -1,7 +1,5 @@
 trigger:
-  branches:
-    include:
-    - 'dotsource_azdevops_invokebuild'
+- dotsource_azdevops_invokebuild
 resources:
 - repo: self
 queue:
