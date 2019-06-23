@@ -15,4 +15,5 @@ This repository contains multiple branches to demo different approaches.
 |**psm1_azdevops**|[link](https://github.com/lazywinadmin/PSModuleSample/blob/psm1_azdevops)||simple psm1|module with appveyor|
 |**psm1_azdevops_buildps1**|[link](https://github.com/lazywinadmin/PSModuleSample/tree/psm1_azdevops_buildps1)||simple psm1|module with APPVEYOR, build.ps1|
 |**dotsource**|[link](https://github.com/lazywinadmin/PSModuleSample/tree/dotsource)||dot sourced|module dot sourced|
-|**dotsource_azdevops**|[link]()||dot sourced|module with AZURE DEVOPS, build.ps1, Psake, deployed to Gallery|
+|**dotsource_azdevops**|[link]()|[![Build Status](https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/build/status/dotsource_azdevops?branchName=dotsource_azdevops)](https://dev.azure.com/lazywinadmin/PSModuleSample/_build/latest?definitionId=10&branchName=dotsource_azdevops)|dot sourced|module with AZURE DEVOPS, build.ps1, Psake, deployed to Gallery|
+|**dotsource_azdevops_invokebuild**|[link]()|[![Build Status](https://dev.azure.com/lazywinadmin/PSModuleSample/_apis/build/status/dotsource_azdevops_invokebuild2?branchName=master)](https://dev.azure.com/lazywinadmin/PSModuleSample/_build/latest?definitionId=12&branchName=master)|dot sourced|module with AZURE DEVOPS, build.ps1, Psake, deployed to Gallery|
