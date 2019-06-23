@@ -14,5 +14,3 @@ This repository contains multiple branches to demo different approaches.
 |**psm1_appveyor_release**|[link](https://github.com/lazywinadmin/PSModuleSample/tree/psm1_appveyor_release)|n/a|simple psm1|module with APPVEYOR, build.ps1, release to PSGallery|
 |**dotsource**|[link](https://github.com/lazywinadmin/PSModuleSample/tree/dotsource)||dot sourced|module dot sourced|
 |**dotsource_azdevops**|[link]()||dot sourced|module with AZURE DEVOPS, build.ps1, Psake, deployed to Gallery|
-|**compiled_appveyor_deploy**|[link]()||compiled|module with APPVEYOR, build.ps1, Psake, BuildHelper, deployed to Gallery|
-|**compiled_azdevops_deploy**|[link]()||compiled|module with AZURE DEVOPS, build.ps1, Psake, BuildHelper, deployed to Gallery|
